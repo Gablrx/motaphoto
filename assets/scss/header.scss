@@ -1,0 +1,36 @@
+/*
+ * HEADER */
+
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-branding a {
+  font-size: 24px;
+  text-decoration: none;
+  color: #333;
+}
+
+.site-navigation {
+  display: flex;
+}
+
+.site-navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.site-navigation li {
+  margin-left: 20px;
+}
+
+.site-navigation a {
+  text-decoration: none;
+  color: #333;
+}
+/*
+ FIN HEADER */
