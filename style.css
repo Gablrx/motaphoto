@@ -11,41 +11,215 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: motaphoto
 Text Domain: motaphoto
 */
+@font-face {
+  font-family: "Space Mono";
+  src: url("../motaphoto/assets/fonts/space-mono/SpaceMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Space Mono";
+  src: url("../motaphoto/assets/fonts/space-mono/SpaceMono-Italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Space Mono";
+  src: url("../motaphoto/assets/fonts/space-mono/SpaceMono-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Space Mono";
+  src: url("../motaphoto/assets/fonts/space-mono/SpaceMono-BoldItalic.woff2") format("woff2");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../motaphoto/assets/fonts/poppins/Poppins-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../motaphoto/assets/fonts/poppins/Poppins-LightItalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
 /*
  * HEADER */
+.site-header {
+  background-color: #fff;
+  padding: 10px 0;
+  /* border-bottom: 1px solid #ccc;  */
+}
 .site-header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
-
-.site-branding a {
-  font-size: 24px;
+.site-header .container .logo img {
+  max-width: 216px;
+  height: auto;
+}
+.site-header .container .site-navigation {
+  display: flex;
+}
+.site-header .container .site-navigation a {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #000;
   text-decoration: none;
-  color: #333;
-}
-
-.site-navigation {
-  display: flex;
-}
-
-.site-navigation ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-.site-navigation li {
   margin-left: 20px;
 }
-
-.site-navigation a {
-  text-decoration: none;
-  color: #333;
+.site-header .container .site-navigation a:hover {
+  font-weight: bold;
+}
+.site-header .container .site-navigation ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.site-header .container .site-navigation li {
+  padding: 0 10px;
 }
 
 /*
  FIN HEADER */
+.site-footer {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23.7px;
+  color: #000;
+  background-color: #ffffff;
+  padding: 20px 0;
+}
+.site-footer .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.site-footer .container .footer-navigation,
+.site-footer .container .footer-credits {
+  display: flex;
+}
+.site-footer .container .footer-navigation a,
+.site-footer .container .footer-navigation p,
+.site-footer .container .footer-credits a,
+.site-footer .container .footer-credits p {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #000;
+  text-decoration: none;
+  margin-left: 20px;
+}
+.site-footer .container .footer-navigation a:hover,
+.site-footer .container .footer-credits a:hover {
+  font-weight: bold;
+}
+.site-footer .container .footer-navigation ul,
+.site-footer .container .footer-credits ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.site-footer .container .footer-navigation li,
+.site-footer .container .footer-navigation p,
+.site-footer .container .footer-credits li,
+.site-footer .container .footer-credits p {
+  padding: 0 10px;
+}
+
+@media (min-width: 1025px) {
+  h1 {
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 96px;
+    line-height: 142.18px;
+  }
+  h2 {
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 66px;
+    line-height: 58px;
+  }
+  h3 {
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26.66px;
+    letter-spacing: 1.8px;
+  }
+  .description-photo {
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20.73px;
+    letter-spacing: 1.4px;
+  }
+  p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+@media (max-width: 1025px) {
+  h1 {
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 27.59px;
+    line-height: 40.86px;
+  }
+  h2 {
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 46px;
+    line-height: 48px;
+  }
+  h3 {
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26.66px;
+    letter-spacing: 1.8px;
+  }
+  .description-photo {
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20.73px;
+    letter-spacing: 1.4px;
+  }
+  p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */

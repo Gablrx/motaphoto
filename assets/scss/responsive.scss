@@ -1,0 +1,15 @@
+// Breakpoints
+
+$breakpoint: 1025px;
+
+@mixin desktop {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}

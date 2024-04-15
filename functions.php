@@ -8,11 +8,15 @@ add_action('wp_enqueue_scripts', 'motaphoto_scripts');
 
 
 
+
+
 function motaphoto_setup()
 {
-    // Menu
+    // Enregistrement des menus
     register_nav_menus(array(
-        'menu_principal' => 'Menu Principal',
+        'primary' => esc_html__('Primary Menu', 'text-domain'),
+        'footer' => esc_html__('Footer Menu', 'text-domain')
     ));
 }
+
 add_action('after_setup_theme', 'motaphoto_setup');
