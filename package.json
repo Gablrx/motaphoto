@@ -4,5 +4,8 @@
   },
   "scripts": {
     "sass": "sass --watch assets/scss/main.scss style.css"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
   }
 }

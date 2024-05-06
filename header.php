@@ -1,3 +1,4 @@
+<!-- header.php -->
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
@@ -23,12 +24,34 @@
 <body <?php body_class(); ?>>
 
     <header class="site-header">
-        <div class="container">
-            <a href="<?php echo home_url(); ?>" class="logo">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/Nathalie_Mota_logo_345x22.png" alt="Nathalie Mota">
-            </a>
-            <nav class="site-navigation">
-                <?php wp_nav_menu(array('theme_location' => 'primary', 'menu_id' => 'primary-menu')); ?>
-            </nav>
+        <div class="desktop-menu">
+            <div class="container">
+                <a href="<?php echo home_url(); ?>" class="logo">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/Nathalie_Mota_logo_345x22.png" alt="Nathalie Mota">
+                </a>
+
+
+
+                <nav class="site-navigation">
+                    <?php wp_nav_menu(array('theme_location' => 'primary', 'menu_id' => 'primary-menu')); ?>
+                    <!-- Lien modale Contact -->
+                    <a href="#contactModal" class="open-contact-modal">Contact</a>
+                </nav>
+            </div>
+        </div>
+        <div class="mobile-menu">
+            <div class="container">
+                <a href="<?php echo home_url(); ?>" class="logo">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/Nathalie_Mota_logo_345x22.png" alt="Nathalie Mota">
+                </a>
+
+                <!-- Hamburger Menu Button -->
+                <button class="hamburger-menu" aria-controls="primary-menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+            </div>
         </div>
     </header>

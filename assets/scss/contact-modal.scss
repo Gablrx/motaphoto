@@ -1,0 +1,77 @@
+/* contact-modal.scss */
+.contact-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: url("../motaphoto/assets/img/close.png"), auto;
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    border: 4px solid #000000;
+    max-width: 500px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    cursor: default;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    label,
+    input[type="submit"] {
+      text-transform: uppercase;
+      font-family: Space Mono;
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .contactFormContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      input,
+      textarea,
+      input[type="submit"] {
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid lightgray;
+      }
+
+      input,
+      input[type="submit"] {
+        height: 40px;
+      }
+
+      textarea {
+        height: 100px;
+      }
+
+      input[type="submit"] {
+        margin: auto;
+        border-radius: 2px;
+        background-color: lightgray;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: darken(#888, 10%);
+        }
+      }
+    }
+  }
+}

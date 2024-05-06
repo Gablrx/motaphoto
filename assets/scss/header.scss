@@ -3,7 +3,8 @@
 
 .site-header {
   background-color: #fff;
-  padding: 10px 0;
+
+  padding: 15px 0;
   /* border-bottom: 1px solid #ccc;  */
 
   .container {
@@ -11,7 +12,7 @@
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 10vw;
     padding: 0 15px;
 
     .logo img {
@@ -52,3 +53,40 @@
 }
 /*
  FIN HEADER */
+
+@include mobile {
+  .desktop-menu {
+    display: none;
+  }
+  .logo img {
+    width: 138px;
+    height: auto;
+  }
+}
+@include desktop {
+  .mobile-menu {
+    display: none;
+  }
+}
+
+.hamburger-menu {
+  /* display: none; */
+  flex-direction: column;
+  justify-content: space-around;
+  height: 25px; // Change as needed
+  width: 35px; // Change as needed
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  span {
+    display: block;
+    height: 2px; // Change as needed
+    width: 100%;
+    background: #000;
+  }
+
+  @include mobile {
+    display: flex;
+  }
+}

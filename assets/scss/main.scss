@@ -10,92 +10,16 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: motaphoto
 Text Domain: motaphoto
 */
+
+@import "../../node_modules/normalize.css/normalize";
+@import "responsive";
 @import "fonts";
 @import "colors";
-@import "responsive";
 @import "header";
 @import "footer";
+@import "contact-modal";
 
-// Desktop FontStyles
-@include desktop {
-  h1 {
-    font-family: "Space Mono", monospace;
-    font-weight: 700;
-    font-style: italic;
-    font-size: 96px;
-    line-height: 142.18px;
-  }
-
-  h2 {
-    font-family: "Space Mono", monospace;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 66px;
-    line-height: 58px;
-  }
-
-  h3 {
-    font-family: "Space Mono", monospace;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 26.66px;
-    letter-spacing: 1.8px; // 10% of 18px
-  }
-
-  .description-photo {
-    font-family: "Space Mono", monospace;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20.73px;
-    letter-spacing: 1.4px; // 10% of 14px
-  }
-
-  p {
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 21px;
-  }
-}
-
-// Mobile FontStyles
-@include mobile {
-  h1 {
-    font-family: "Space Mono", monospace;
-    font-weight: 700;
-    font-style: italic;
-    font-size: 27.59px;
-    line-height: 40.86px;
-  }
-
-  h2 {
-    font-family: "Space Mono", monospace;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 46px;
-    line-height: 48px;
-  }
-
-  h3 {
-    font-family: "Space Mono", monospace;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 26.66px;
-    letter-spacing: 1.8px; // Same as desktop
-  }
-
-  .description-photo {
-    font-family: "Space Mono", monospace;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20.73px;
-    letter-spacing: 1.4px; // Same as desktop
-  }
-
-  p {
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 21px;
-  }
+#main-content {
+  margin: 0 10vw;
+  /* border: 1px solid red; */
 }

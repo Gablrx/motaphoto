@@ -1,3 +1,4 @@
+<!-- footer.php -->
 <footer class="site-footer">
     <div class="container">
         <nav class="footer-navigation">
@@ -11,9 +12,14 @@
             ?>
         </nav>
         <div class="footer-credits">
-            <p>Touts droits réservés</p>
+            <p>Tous droits réservés</p>
         </div>
     </div>
+
+
+    <?php get_template_part('template-parts/modal-contact'); ?>
+
+
 </footer>
 <?php wp_footer(); ?>
 </body>

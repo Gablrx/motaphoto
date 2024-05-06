@@ -2,8 +2,10 @@
 
 <main>
     <?php
-    if (have_posts()) : while (have_posts()) : the_post();
-            get_template_part('content', get_post_format());
+    if (have_posts()) :
+        while (have_posts()) : the_post();
+            the_title('<h1>', '</h1>');
+            the_content();
         endwhile;
     endif;
     ?>
