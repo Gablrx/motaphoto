@@ -1,7 +1,7 @@
 <!-- index.php -->
 <?php get_header(); ?>
 
-<main>
+<main id="main-content" role="main">
 
     <?php
     if (have_posts()) :

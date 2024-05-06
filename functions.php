@@ -25,6 +25,14 @@ function motaphoto_scripts()
         true
 
     );
+    wp_enqueue_script(
+        'navigation-photos-js',
+        get_template_directory_uri() . '/assets/js/navigation-photos.js',
+        array(),
+        false,
+        true
+
+    );
 }
 add_action('wp_enqueue_scripts', 'motaphoto_scripts');
 

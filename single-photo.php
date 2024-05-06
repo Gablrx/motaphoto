@@ -6,37 +6,59 @@
         // Ici, le contenu de chaque photo
     ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <header class="entry-header">
-                <h2 class="entry-title"><?php the_title(); ?></h1>
-            </header>
-
-            <div class="entry-content">
-                <?php
-                if (has_post_thumbnail()) {
-                    the_post_thumbnail('large');
-                }
-
-                $categorie_terms = get_the_term_list($post->ID, 'photo_categories', '', ', ');
-                $format_terms = get_the_term_list($post->ID, 'photo_formats', '', ', ');
-                ?>
-                <p>Référence : <?php the_field('reference'); ?></p>
-                <p>Catégorie : <?php echo !is_wp_error($categorie_terms) ? $categorie_terms : 'Non classé'; ?></p>
-                <p>Format : <?php echo !is_wp_error($format_terms) ? $format_terms : 'Non spécifié'; ?></p>
-                <p>Type : <?php the_field('type'); ?></p>
-                <p>Année : <?php echo get_the_date('Y'); ?></p>
-                <p>Cette photo vous intéresse ? <a href="#contactModal" class="open-contact-modal autoFilledRefPhoto" data-ref-photo="<?php the_field('reference'); ?>">Contact</a> </p>
 
 
+            <div class="photo-content">
+                <div class="infos-photo">
+
+                    <h2 class="entry-title"><?php the_title(); ?></h2>
+
+                    <div>
+                        <p>Référence : <?php the_field('reference'); ?></p>
+                        <?php $categorie_terms = get_the_term_list($post->ID, 'photo_categories', '', ', ');
+                        $format_terms = get_the_term_list($post->ID, 'photo_formats', '', ', '); ?>
+                        <p>Catégorie : <?php echo !is_wp_error($categorie_terms) ? $categorie_terms : 'Non classé'; ?></p>
+                        <p>Format : <?php echo !is_wp_error($format_terms) ? $format_terms : 'Non spécifié'; ?></p>
+                        <p>Type : <?php the_field('type'); ?></p>
+                        <p>Année : <?php echo get_the_date('Y'); ?></p>
+                    </div>
+                </div>
+                <div class="img-photo">
+                    <?php
+                    if (has_post_thumbnail()) {
+                        the_post_thumbnail('large');
+                    }
+                    ?>
+                </div>
             </div>
 
-            <!-- Navigation links -->
-            <nav class="navigation post-navigation" role="navigation">
-                <div class="nav-links">
-                    <span class="nav-previous"><?php previous_post_link('%link', '←'); ?></span>
-                    <span class="nav-next"><?php next_post_link('%link', '→'); ?></span>
-                </div>
-            </nav>
+            <div class="interactions">
+                <div class="contact-photo">
+                    <p>Cette photo vous intéresse ?</p>
+                    <a href="#contactModal" class="contact-photo-btn open-contact-modal autoFilledRefPhoto" data-ref-photo="<?php the_field('reference'); ?>">Contact</a>
 
+                </div>
+
+                <!-- Navigation links -->
+                <nav class="navigation post-navigation" role="navigation">
+                    <div class="photo-nav">
+                        <div class="photo-preview">
+                            <?php
+                            if (has_post_thumbnail()) {
+
+                                $thumbnail_src = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
+                                echo '<img src="' . esc_url($thumbnail_src[0]) . '" alt="Thumbnail" />';
+                            }
+                            ?>
+                        </div>
+                        <div class="nav-links">
+                            <span class="nav-previous" data-thumbnail="<?php echo esc_url(get_the_post_thumbnail_url(get_previous_post(), 'thumbnail')); ?>"><?php previous_post_link('%link', '←'); ?></span>
+                            <span class="nav-next" data-thumbnail="<?php echo esc_url(get_the_post_thumbnail_url(get_next_post(), 'thumbnail')); ?>"><?php next_post_link('%link', '→'); ?></span>
+                        </div>
+                    </div>
+                </nav>
+
+            </div>
 
         </article>
 
