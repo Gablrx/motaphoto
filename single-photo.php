@@ -1,14 +1,12 @@
 <?php get_header(); ?>
 
 <main id="main-content" role="main">
-    <?php
-    while (have_posts()) : the_post();
-        // Ici, le contenu de chaque photo
-    ?>
+    <!-- DETAILS PHOTO -->
+    <?php while (have_posts()) : the_post(); ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-
             <div class="photo-content">
+
                 <div class="infos-photo">
 
                     <h2 class="entry-title"><?php the_title(); ?></h2>
@@ -23,6 +21,7 @@
                         <p>Année : <?php echo get_the_date('Y'); ?></p>
                     </div>
                 </div>
+
                 <div class="img-photo">
                     <?php
                     if (has_post_thumbnail()) {
@@ -32,11 +31,12 @@
                 </div>
             </div>
 
+            <!-- INTERACTIONS -->
             <div class="interactions">
+
                 <div class="contact-photo">
                     <p>Cette photo vous intéresse ?</p>
                     <a href="#contactModal" class="contact-photo-btn open-contact-modal autoFilledRefPhoto" data-ref-photo="<?php the_field('reference'); ?>">Contact</a>
-
                 </div>
 
                 <!-- Navigation links -->
@@ -48,8 +48,7 @@
 
                                 $thumbnail_src = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
                                 echo '<img src="' . esc_url($thumbnail_src[0]) . '" alt="Thumbnail" />';
-                            }
-                            ?>
+                            } ?>
                         </div>
                         <div class="nav-links">
                             <span class="nav-previous" data-thumbnail="<?php echo esc_url(get_the_post_thumbnail_url(get_previous_post(), 'thumbnail')); ?>"><?php previous_post_link('%link', '←'); ?></span>
@@ -59,6 +58,66 @@
                 </nav>
 
             </div>
+
+
+            <!-- PHOTOS MEME CATEGORIE : -->
+            <?php
+            // Récupérer la catégorie de la photo actuelle
+            $current_photo_categories = wp_get_post_terms($post->ID, 'photo_categories', array("fields" => "ids"));
+
+            // Vérifier si on a des catégories valides
+            if (!is_wp_error($current_photo_categories) && !empty($current_photo_categories)) {
+                // Préparer les arguments pour la requête des photos de la même catégorie
+                $args = array(
+                    'post_type' => 'photo', // Assurez-vous que c'est le bon type de post pour vos photos
+                    'posts_per_page' => 2, // 2 photos uniquement
+                    'post__not_in' => array($post->ID), // Exclure la photo courante
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'photo_categories',
+                            'field' => 'term_id',
+                            'terms' => $current_photo_categories,
+                        ),
+                    ),
+                );
+
+                $related_photos = new WP_Query($args);
+
+                if ($related_photos->have_posts()) : ?>
+                    <div class="related-photos">
+                        <h2>Vous aimerez aussi</h2>
+                        <div class="single-photo-grid">
+                            <?php while ($related_photos->have_posts()) : $related_photos->the_post(); ?>
+                                <div class="photo-item">
+                                    <?php if (has_post_thumbnail()) : ?>
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php the_post_thumbnail('medium'); ?>
+                                        </a>
+                                        <div class="photo-overlay">
+                                            <div style="background-color: black;">
+                                                <a href=" <?php the_permalink(); ?>">
+                                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-eye.svg" alt="Voir la photo en détail"> </a>
+                                            </div>
+                                            <div style="background-color: black;">
+                                                <a href="#">
+                                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-full-screen.svg" alt="Voir la photo en plein écran"> </a>
+                                            </div>
+                                            <p> <?php the_title(); ?></p>
+                                            <p><?php echo strip_tags(get_the_term_list($post->ID, 'photo_categories', '', ', ')); ?></p>
+                                        </div>
+                                    <?php endif; ?>
+
+                                </div>
+                            <?php endwhile; ?>
+                        </div>
+                    </div>
+                    <?php wp_reset_postdata(); ?>
+            <?php endif;
+            }
+            ?>
+
+
+
 
         </article>
 
