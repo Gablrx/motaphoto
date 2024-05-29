@@ -1,4 +1,3 @@
-
 <?php
 // functions.php
 
@@ -15,7 +14,6 @@ function motaphoto_scripts()
         array(),
         false,
         true
-
     );
     wp_enqueue_script(
         'burger-menu-js',
@@ -23,7 +21,6 @@ function motaphoto_scripts()
         array(),
         false,
         true
-
     );
     wp_enqueue_script(
         'navigation-photos-js',
@@ -31,11 +28,23 @@ function motaphoto_scripts()
         array(),
         false,
         true
-
+    );
+    wp_enqueue_script(
+        'load-more-js',
+        get_template_directory_uri() . '/assets/js/load-more.js',
+        array(),
+        false,
+        true
+    );
+    wp_enqueue_script(
+        'filters-js',
+        get_template_directory_uri() . '/assets/js/filters.js',
+        array(),
+        false,
+        true
     );
 }
 add_action('wp_enqueue_scripts', 'motaphoto_scripts');
-
 
 function motaphoto_setup()
 {
@@ -45,3 +54,8 @@ function motaphoto_setup()
         'footer' => esc_html__('Footer Menu', 'text-domain')
     ));
 }
+
+// Load more AJAX
+require get_template_directory() . '/inc/ajax-load-more.php';
+// Filtres AJAX
+require get_template_directory() . '/inc/ajax-filters.php';

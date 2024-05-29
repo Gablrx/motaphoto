@@ -2,16 +2,28 @@ document.addEventListener("DOMContentLoaded", function () {
     var navPrevious = document.querySelector('.nav-previous');
     var navNext = document.querySelector('.nav-next');
     var photoPreview = document.querySelector('.photo-preview img');
-    var currentThumbnailURL = photoPreview.getAttribute('src');
 
-    var previousThumbnailURL = navPrevious.getAttribute('data-thumbnail');
-    var nextThumbnailURL = navNext.getAttribute('data-thumbnail');
+    if (photoPreview) {
+        var currentThumbnailURL = photoPreview.getAttribute('src');
 
-    navPrevious.addEventListener('mouseover', function () {
-        photoPreview.setAttribute('src', previousThumbnailURL);
-    });
+        if (navPrevious) {
+            var previousThumbnailURL = navPrevious.getAttribute('data-thumbnail');
+            navPrevious.addEventListener('mouseover', function () {
+                photoPreview.setAttribute('src', previousThumbnailURL);
+            });
+            navPrevious.addEventListener('mouseout', function () {
+                photoPreview.setAttribute('src', currentThumbnailURL);
+            });
+        }
 
-    navNext.addEventListener('mouseover', function () {
-        photoPreview.setAttribute('src', nextThumbnailURL);
-    });
+        if (navNext) {
+            var nextThumbnailURL = navNext.getAttribute('data-thumbnail');
+            navNext.addEventListener('mouseover', function () {
+                photoPreview.setAttribute('src', nextThumbnailURL);
+            });
+            navNext.addEventListener('mouseout', function () {
+                photoPreview.setAttribute('src', currentThumbnailURL);
+            });
+        }
+    }
 });
