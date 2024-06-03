@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Reset pagination
             resetPagination();
+
+            // Update the load more button display
+            updateLoadMoreButton();
         });
     }
 
@@ -39,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             updateMaxPages(response);
+            updateLoadMoreButton(); // Update the load more button display
         });
     }
 
@@ -82,6 +86,14 @@ document.addEventListener('DOMContentLoaded', function () {
         currentPage = 1;
         maxPages = parseInt(document.querySelector('#max-pages').textContent, 10);
         if (loadMoreButton) {
+            loadMoreButton.style.display = 'block';
+        }
+    }
+
+    function updateLoadMoreButton() {
+        if (currentPage >= maxPages) {
+            loadMoreButton.style.display = 'none';
+        } else {
             loadMoreButton.style.display = 'block';
         }
     }
