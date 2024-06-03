@@ -1,4 +1,4 @@
-<div id="photo-filters">
+<div id="photos-filters">
     <select id="filter-categories">
         <option value="">Catégories</option>
         <?php
@@ -18,6 +18,7 @@
         ?>
     </select>
     <select id="sort-order">
+        <option value="">Trier par</option>
         <option value="desc">Les plus récentes</option>
         <option value="asc">Les plus anciennes</option>
     </select>

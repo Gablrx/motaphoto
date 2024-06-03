@@ -1,4 +1,4 @@
-<div id="photo-grid">
+<div id="photos-grid">
     <?php
     $args = array(
         'post_type' => 'photo',

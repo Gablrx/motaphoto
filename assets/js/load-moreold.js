@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
         request.onload = function () {
             if (this.status >= 200 && this.status < 400) {
                 const response = this.responseText;
-                const photoGrid = document.getElementById('photo-grid');
+                const photoGrid = document.getElementById('photos-grid');
                 const initialPhotoCount = photoGrid.querySelectorAll('.photo-item').length;
 
 
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
         request.onload = function () {
             if (this.status >= 200 && this.status < 400) {
                 const response = this.responseText;
-                const photoGrid = document.getElementById('photo-grid');
+                const photoGrid = document.getElementById('photos-grid');
                 if (photoGrid) {
                     photoGrid.innerHTML = response;
                 }
