@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-
+<!-- single-photo.php -->
 <main id="main-content" role="main">
     <!-- DETAILS PHOTO -->
     <?php while (have_posts()) : the_post(); ?>

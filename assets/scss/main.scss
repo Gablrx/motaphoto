@@ -19,8 +19,11 @@ Text Domain: motaphoto
 @import "single-photo";
 @import "footer";
 @import "contact-modal";
+@import "lightbox";
+@import "grid-photo-item";
 
 #main-content {
   margin: 0 11vw;
+
   /* border: 1px solid red; */
 }

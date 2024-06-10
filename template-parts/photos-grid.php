@@ -1,3 +1,4 @@
+<!-- photos-grid.php -->
 <div id="photos-grid">
     <?php
     $args = array(

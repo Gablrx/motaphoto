@@ -1,3 +1,5 @@
+/* filters.js */
+
 document.addEventListener('DOMContentLoaded', function () {
     const filterCategories = document.getElementById('filter-categories');
     const filterFormats = document.getElementById('filter-formats');

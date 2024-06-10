@@ -1,4 +1,5 @@
 <?php
+/* ajax-filters.php */
 function motaphoto_filter_photos()
 {
     $category = isset($_GET['category']) ? $_GET['category'] : '';

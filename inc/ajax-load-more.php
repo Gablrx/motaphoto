@@ -1,10 +1,12 @@
 <?php
+/* ajax-load-more.php */
 function motaphoto_load_more_photos()
 {
+    // Validate and sanitize input
     $paged = isset($_GET['page']) ? intval($_GET['page']) : 1;
-    $category = isset($_GET['category']) ? $_GET['category'] : '';
-    $format = isset($_GET['format']) ? $_GET['format'] : '';
-    $order = isset($_GET['order']) ? $_GET['order'] : 'desc'; // Default order to 'desc'
+    $category = isset($_GET['category']) ? sanitize_text_field($_GET['category']) : '';
+    $format = isset($_GET['format']) ? sanitize_text_field($_GET['format']) : '';
+    $order = isset($_GET['order']) ? sanitize_text_field($_GET['order']) : 'desc';
 
     $tax_query = array('relation' => 'AND');
 
@@ -31,16 +33,19 @@ function motaphoto_load_more_photos()
         'tax_query' => $tax_query,
         'order' => $order,
     );
+
     $photos = new WP_Query($args);
 
-    if ($photos->have_posts()) :
-        while ($photos->have_posts()) : $photos->the_post();
+    if ($photos->have_posts()) {
+        while ($photos->have_posts()) {
+            $photos->the_post();
             get_template_part('template-parts/grid-photo-item');
-        endwhile;
+        }
         wp_reset_postdata();
-    endif;
+    } else {
+        echo '<p>Aucune photo trouvée.</p>';
+    }
 
-    // nombre maximum de pages de résultats
     echo '<div id="max-pages" style="display:none;">' . $photos->max_num_pages . '</div>';
 
     wp_die();

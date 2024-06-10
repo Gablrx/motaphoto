@@ -1,3 +1,4 @@
+<!-- photo-filters.php -->
 <div id="photos-filters">
     <select id="filter-categories">
         <option value="">Catégories</option>
