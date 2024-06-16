@@ -1,10 +1,13 @@
+/* burger-menu.js */
+// JavaScript
 document.addEventListener('DOMContentLoaded', function () {
-    var hamburger = document.querySelector('.hamburger-menu');
-    var nav = document.querySelector('.site-navigation');
+    const burgerMenu = document.querySelector('.burger-menu');
+    const mobileMenu = document.querySelector('.mobile-menu');
 
-    hamburger.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !expanded);
-        nav.classList.toggle('is-active');
+    burgerMenu.addEventListener('click', function () {
+        const isExpanded = burgerMenu.getAttribute('aria-expanded') === 'true';
+        burgerMenu.setAttribute('aria-expanded', !isExpanded);
+        mobileMenu.classList.toggle('active');
+        burgerMenu.classList.toggle('open');
     });
 });

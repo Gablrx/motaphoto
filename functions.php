@@ -22,7 +22,8 @@ function motaphoto_setup()
         'footer' => esc_html__('Footer Menu', 'text-domain')
     ));
 }
-
+// Random header photo
+require get_template_directory() . '/inc/get-random-photo.php';
 // Load more AJAX
 require get_template_directory() . '/inc/ajax-load-more.php';
 // Filtres AJAX

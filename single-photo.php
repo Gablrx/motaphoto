@@ -89,6 +89,7 @@
                         <div class="single-photo-grid">
                             <?php while ($related_photos->have_posts()) : $related_photos->the_post(); ?>
                                 <?php get_template_part('template-parts/grid-photo-item'); ?>
+                                <?php get_template_part('template-parts/lightbox'); ?>
                             <?php endwhile; ?>
                         </div>
                     </div>

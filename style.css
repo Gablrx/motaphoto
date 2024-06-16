@@ -369,6 +369,9 @@ template {
     font-style: italic;
     font-size: 96px;
     line-height: 142.18px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0);
+    -webkit-text-stroke: 2px rgb(255, 255, 255);
   }
   h2 {
     font-family: "Space Mono", monospace;
@@ -409,8 +412,11 @@ template {
     font-family: "Space Mono", monospace;
     font-weight: 700;
     font-style: italic;
-    font-size: 27.59px;
-    line-height: 40.86px;
+    font-size: 52px;
+    line-height: 100px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0);
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
   }
   h2 {
     font-family: "Space Mono", monospace;
@@ -440,19 +446,14 @@ template {
     line-height: 21px;
   }
 }
-/*
- * HEADER */
 .site-header {
   background-color: #fff;
-  padding: 15px 0;
-  /* border-bottom: 1px solid #ccc;  */
 }
 .site-header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* max-width: 1200px; */
-  margin: 0 10vw;
+  margin: 15px 10vw;
   padding: 0 15px;
 }
 .site-header .container .logo img {
@@ -461,6 +462,11 @@ template {
 }
 .site-header .container .site-navigation {
   display: flex;
+}
+@media (max-width: 1025px) {
+  .site-header .container .site-navigation {
+    display: none;
+  }
 }
 .site-header .container .site-navigation a {
   font-family: "Space Mono", monospace;
@@ -483,9 +489,37 @@ template {
 .site-header .container .site-navigation li {
   padding: 0 10px;
 }
+.site-header .mobile-menu {
+  display: none;
+  background-color: red;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.site-header .mobile-menu a {
+  font-family: Space Mono;
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 65.16px;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.site-header .mobile-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-header .mobile-menu li {
+  text-align: center;
+}
+.site-header .mobile-menu.active {
+  display: flex;
+}
 
-/*
- FIN HEADER */
 @media (max-width: 1025px) {
   .desktop-menu {
     display: none;
@@ -494,14 +528,12 @@ template {
     width: 138px;
     height: auto;
   }
-}
-@media (min-width: 1025px) {
-  .mobile-menu {
-    display: none;
+  .burger-menu {
+    display: flex;
   }
 }
-.hamburger-menu {
-  /* display: none; */
+.burger-menu {
+  display: none;
   flex-direction: column;
   justify-content: space-around;
   height: 25px;
@@ -509,17 +541,46 @@ template {
   background: transparent;
   border: none;
   cursor: pointer;
+  position: relative;
+  z-index: 1001;
 }
-.hamburger-menu span {
+.burger-menu span {
   display: block;
   height: 2px;
   width: 100%;
   background: #000;
+  transition: all 0.3s ease;
+}
+.burger-menu.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.burger-menu.open span:nth-child(2) {
+  opacity: 0;
+}
+.burger-menu.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 @media (max-width: 1025px) {
-  .hamburger-menu {
+  .burger-menu {
     display: flex;
   }
+}
+
+#random-photo-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+#random-photo-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#random-photo-header h1 {
+  position: absolute;
+  text-align: center;
 }
 
 .photo-content {
@@ -811,14 +872,16 @@ template {
 }
 
 .photo-item {
-  width: 564px;
+  width: 45%;
   height: 495px;
   position: relative;
   display: inline-block;
   margin: 10px;
 }
-.photo-item a {
-  display: block;
+@media (max-width: 1025px) {
+  .photo-item {
+    width: 100%;
+  }
 }
 .photo-item img {
   width: 100%;
@@ -841,16 +904,19 @@ template {
   transition: opacity 0.3s ease;
   color: #fff;
 }
-.photo-item .photo-overlay .top-right-icon,
-.photo-item .photo-overlay .center-icon {
+.photo-item .photo-overlay .full-screen-icon,
+.photo-item .photo-overlay .eye-icon {
   position: absolute;
   cursor: pointer;
 }
-.photo-item .photo-overlay .top-right-icon {
+.photo-item .photo-overlay .full-screen-icon {
   top: 10px;
   right: 10px;
+  background-color: black;
+  border-radius: 25px;
+  padding: 10px;
 }
-.photo-item .photo-overlay .center-icon {
+.photo-item .photo-overlay .eye-icon {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -865,6 +931,7 @@ template {
 }
 .photo-item .photo-overlay p {
   margin: 5px 10px;
+  text-transform: uppercase;
 }
 .photo-item:hover .photo-overlay {
   opacity: 1;
