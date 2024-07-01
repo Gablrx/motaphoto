@@ -1,97 +1,71 @@
 /* filters.js */
-
 document.addEventListener('DOMContentLoaded', function () {
-    const filterCategories = document.getElementById('filter-categories');
-    const filterFormats = document.getElementById('filter-formats');
-    const sortOrder = document.getElementById('sort-order');
+    // Sélectionne les éléments DOM pour les filtres et le bouton de chargement
     const loadMoreButton = document.getElementById('load-more');
+
+    // Variables pour la pagination
     let currentPage = 1;
     let maxPages = parseInt(document.querySelector('#max-pages').textContent, 10);
 
+    // Fonction pour appliquer les filtres
     function applyFilters() {
-        const category = filterCategories ? filterCategories.value : '';
-        const format = filterFormats ? filterFormats.value : '';
-        const order = sortOrder ? sortOrder.value : 'desc';
+        const category = jQuery('#filter-categories').val();
+        const format = jQuery('#filter-formats').val();
+        const order = jQuery('#sort-order').val();
+        currentPage = 1;
 
-        sendAjaxRequest('filter_photos', category, format, order, 1, function (response) {
-            const photoGrid = document.getElementById('photos-grid');
-            if (photoGrid) {
-                photoGrid.innerHTML = response;
-            }
-
-            updateMaxPages(response);
-
-            // Reset pagination
-            resetPagination();
-
-            // Update the load more button display
-            updateLoadMoreButton();
-        });
+        // Envoie une requête AJAX pour récupérer les photos filtrées
+        fetchPhotos('filter_photos', category, format, order, 1);
     }
 
-    function loadMorePhotos(page) {
-        const category = filterCategories ? filterCategories.value : '';
-        const format = filterFormats ? filterFormats.value : '';
-        const order = sortOrder ? sortOrder.value : 'desc';
+    // Fonction pour charger plus de photos
+    function loadMorePhotos() {
+        const category = jQuery('#filter-categories').val();
+        const format = jQuery('#filter-formats').val();
+        const order = jQuery('#sort-order').val();
 
-        sendAjaxRequest('load_more_photos', category, format, order, page, function (response) {
-            const photoGrid = document.getElementById('photos-grid');
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = response;
-            const newPhotos = tempDiv.querySelectorAll('.photo-item');
-            newPhotos.forEach(photo => {
-                photoGrid.appendChild(photo);
-            });
-
-            updateMaxPages(response);
-            updateLoadMoreButton(); // Update the load more button display
-        });
+        // Envoie une requête AJAX pour charger plus de photos
+        fetchPhotos('load_more_photos', category, format, order, ++currentPage);
     }
 
-    function sendAjaxRequest(action, category, format, order, page, callback) {
-        const request = new XMLHttpRequest();
-        request.open('GET', wpPhotoData.ajaxUrl + `?action=${action}&category=${category}&format=${format}&order=${order}&page=${page}`, true);
-
-        request.onload = function () {
+    // Fonction pour envoyer une requête AJAX
+    function fetchPhotos(action, category, format, order, page) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `${wpPhotoData.ajaxUrl}?action=${action}&category=${category}&format=${format}&order=${order}&page=${page}`, true);
+        xhr.onload = function () {
             if (this.status >= 200 && this.status < 400) {
                 const response = this.responseText;
-                callback(response);
-            } else {
-                console.error('Failed to send AJAX request');
+                const photoGrid = document.getElementById('photos-grid');
+
+                if (action === 'filter_photos') {
+                    // Remplace le contenu du grille de photos par les nouvelles photos filtrées
+                    photoGrid.innerHTML = response;
+                } else {
+                    // Ajoute les nouvelles photos à la fin de la grille
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = response;
+                    photoGrid.append(...tempDiv.children);
+                }
+
+                // Met à jour le nombre maximal de pages et le bouton "Charger plus"
+                updateMaxPages(response);
+                updateLoadMoreButton();
+
+                // Réattache les événements de la lightbox
+                reattachLightboxEvents();
             }
         };
-
-        request.onerror = function () {
-            console.error('Request error');
-        };
-
-        request.send();
+        xhr.send();
     }
 
+    // Fonction pour mettre à jour le nombre maximal de pages
     function updateMaxPages(response) {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(response, 'text/html');
-        maxPages = parseInt(doc.querySelector('#max-pages').textContent, 10);
-
-        if (isNaN(maxPages) || maxPages <= 1 || currentPage >= maxPages) {
-            if (loadMoreButton) {
-                loadMoreButton.style.display = 'none';
-            }
-        } else {
-            if (loadMoreButton) {
-                loadMoreButton.style.display = 'block';
-            }
-        }
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = response;
+        maxPages = parseInt(tempDiv.querySelector('#max-pages').textContent, 10);
     }
 
-    function resetPagination() {
-        currentPage = 1;
-        maxPages = parseInt(document.querySelector('#max-pages').textContent, 10);
-        if (loadMoreButton) {
-            loadMoreButton.style.display = 'block';
-        }
-    }
-
+    // Fonction pour mettre à jour l'affichage du bouton "Charger plus"
     function updateLoadMoreButton() {
         if (currentPage >= maxPages) {
             loadMoreButton.style.display = 'none';
@@ -100,35 +74,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    if (loadMoreButton) {
-        loadMoreButton.addEventListener('click', function () {
-            if (currentPage < maxPages) {
-                currentPage++;
-                loadMorePhotos(currentPage);
-            } else {
-                loadMoreButton.style.display = 'none';
-            }
-        });
+    // Fonction pour réattacher les événements de la lightbox
+    function reattachLightboxEvents() {
+        const event = new CustomEvent('updateLightboxEvents');
+        document.dispatchEvent(event);
     }
 
-    if (filterCategories) {
-        filterCategories.addEventListener('change', function () {
-            resetPagination();
-            applyFilters();
-        });
-    }
+    // Attache des événements aux filtres et au bouton "Charger plus" en utilisant jQuery pour Select2
+    jQuery('#filter-categories').on('change', applyFilters);
+    jQuery('#filter-formats').on('change', applyFilters);
+    jQuery('#sort-order').on('change', applyFilters);
+    loadMoreButton.addEventListener('click', loadMorePhotos);
 
-    if (filterFormats) {
-        filterFormats.addEventListener('change', function () {
-            resetPagination();
-            applyFilters();
-        });
-    }
-
-    if (sortOrder) {
-        sortOrder.addEventListener('change', function () {
-            resetPagination();
-            applyFilters();
-        });
-    }
+    // Réattache initialement les événements de la lightbox
+    reattachLightboxEvents();
 });

@@ -22,6 +22,11 @@
     line-height: 18px;
     cursor: default;
 
+    @include mobile {
+      max-width: 350px;
+      margin: 15% auto;
+    }
+
     img {
       display: block;
       width: 100%;
@@ -69,7 +74,8 @@
         transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: darken(#888, 10%);
+          background-color: black;
+          color: white;
         }
       }
     }

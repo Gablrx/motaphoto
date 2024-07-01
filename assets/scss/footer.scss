@@ -27,8 +27,16 @@
         font-size: 16px;
         color: #000;
         text-decoration: none;
-        margin-left: 20px;
+        /*  margin-left: 20px; */
       }
+
+      @include mobile {
+        a,
+        p {
+          font-size: 10px;
+        }
+      }
+
       a:hover {
         font-weight: bold;
       }

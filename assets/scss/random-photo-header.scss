@@ -11,9 +11,10 @@
     object-fit: cover;
   }
 
-  h1 {
+  .header-title {
     position: absolute;
-
+    color: rgba(255, 255, 255, 0);
+    -webkit-text-stroke: 2px rgb(255, 255, 255);
     text-align: center;
   }
 }

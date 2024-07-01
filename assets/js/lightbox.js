@@ -10,25 +10,36 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentPhotoIndex = -1;
     let photos = [];
 
-    document.querySelectorAll('.open-lightbox').forEach((element, index) => {
-        element.addEventListener('click', function () {
-            const imgSrc = this.getAttribute('data-img');
-            const title = this.getAttribute('data-title');
-            const cat = this.getAttribute('data-cat');
-            currentPhotoIndex = index;
+    // Fonction pour ouvrir la lightbox
+    function openLightbox(event) {
+        const target = event.target.closest('.open-lightbox');
+        if (target) {
             photos = document.querySelectorAll('.open-lightbox');
-
-            lightboxImg.src = imgSrc;
-            lightboxTitle.textContent = title;
-            lightboxCat.textContent = cat;
+            currentPhotoIndex = Array.from(photos).indexOf(target);
+            updateLightbox();
             lightbox.style.display = 'block';
-        });
+        }
+    }
+
+    // Fonction pour mettre à jour la lightbox
+    function updateLightbox() {
+        const photo = photos[currentPhotoIndex];
+        lightboxImg.src = photo.getAttribute('data-img');
+        lightboxTitle.textContent = photo.getAttribute('data-title');
+        lightboxCat.textContent = photo.getAttribute('data-cat');
+    }
+
+    // Attacher l'événement click à l'élément parent pour front-page et single-photo
+    document.querySelectorAll('#photos-grid, .single-photo').forEach(grid => {
+        grid.addEventListener('click', openLightbox);
     });
 
+    // Fermer la lightbox
     closeBtn.addEventListener('click', function () {
         lightbox.style.display = 'none';
     });
 
+    // Navigation dans la lightbox
     prevBtn.addEventListener('click', function () {
         currentPhotoIndex = (currentPhotoIndex > 0) ? currentPhotoIndex - 1 : photos.length - 1;
         updateLightbox();
@@ -37,22 +48,5 @@ document.addEventListener('DOMContentLoaded', function () {
     nextBtn.addEventListener('click', function () {
         currentPhotoIndex = (currentPhotoIndex < photos.length - 1) ? currentPhotoIndex + 1 : 0;
         updateLightbox();
-    });
-
-    function updateLightbox() {
-        const photo = photos[currentPhotoIndex];
-        const imgSrc = photo.getAttribute('data-img');
-        const title = photo.getAttribute('data-title');
-        const cat = photo.getAttribute('data-cat');
-
-        lightboxImg.src = imgSrc;
-        lightboxTitle.textContent = title;
-        lightboxCat.textContent = cat;
-    }
-
-    window.addEventListener('click', function (event) {
-        if (event.target == lightbox) {
-            lightbox.style.display = 'none';
-        }
     });
 });

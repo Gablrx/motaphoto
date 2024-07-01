@@ -17,6 +17,7 @@ Text Domain: motaphoto
 @import "colors";
 @import "menu-header";
 @import "random-photo-header";
+@import "filters";
 @import "single-photo";
 @import "footer";
 @import "contact-modal";
@@ -24,7 +25,12 @@ Text Domain: motaphoto
 @import "grid-photo-item";
 
 #main-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   margin: 0 11vw;
 
-  /* border: 1px solid red; */
+  @include mobile {
+    margin: 0 2vw;
+  }
 }

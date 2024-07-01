@@ -14,6 +14,8 @@
     <!-- Préchargement des polices Poppins -->
     <link rel="preload" href="<?php echo get_template_directory_uri(); ?>/assets/fonts/poppins/Poppins-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
+
+
     <?php wp_head(); ?>
 </head>
 

@@ -14,5 +14,10 @@
         wp_reset_postdata();
     endif;
     ?>
+
+
+
+
     <div id="max-pages" style="display:none;"><?php echo $photos->max_num_pages; ?></div>
+
 </div>

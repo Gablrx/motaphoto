@@ -5,7 +5,7 @@
     </div>
     <div class="lightbox-content">
         <div class="lightbox-nav lightbox-prev">
-            <p>&larr; Précédente</p>
+            <p>&larr; <span class="nav-text">Précédente</span></p>
         </div>
         <div class="lightbox-photo-container">
             <div class="lightbox-photo">
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="lightbox-nav lightbox-next">
-            <p>Suivante &rarr;</p>
+            <p><span class="nav-text">Suivante</span> &rarr;</p>
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <!-- single-photo.php -->
-<main id="main-content" role="main">
+<main id="main-content" class="single-photo" role="main">
     <!-- DETAILS PHOTO -->
     <?php while (have_posts()) : the_post(); ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -36,7 +36,7 @@
 
                 <div class="contact-photo">
                     <p>Cette photo vous intéresse ?</p>
-                    <a href="#contactModal" class="contact-photo-btn open-contact-modal autoFilledRefPhoto" data-ref-photo="<?php the_field('reference'); ?>">Contact</a>
+                    <a href="#contactModal" class="btn open-contact-modal autoFilledRefPhoto" data-ref-photo="<?php the_field('reference'); ?>">Contact</a>
                 </div>
 
                 <!-- Navigation links -->
@@ -85,19 +85,22 @@
 
                 if ($related_photos->have_posts()) : ?>
                     <div class="related-photos">
-                        <h2>Vous aimerez aussi</h2>
+
                         <div class="single-photo-grid">
+                            <h3>Vous aimerez aussi</h3>
                             <?php while ($related_photos->have_posts()) : $related_photos->the_post(); ?>
                                 <?php get_template_part('template-parts/grid-photo-item'); ?>
-                                <?php get_template_part('template-parts/lightbox'); ?>
+
+
                             <?php endwhile; ?>
+
                         </div>
                     </div>
                     <?php wp_reset_postdata(); ?>
             <?php endif;
             }
             ?>
-
+            <?php get_template_part('template-parts/lightbox'); ?>
         </article>
 
     <?php endwhile;

@@ -51,6 +51,12 @@
   color: #fff;
   font-size: 2rem;
   cursor: pointer;
+
+  @include mobile {
+    .nav-text {
+      display: none;
+    }
+  }
 }
 
 .lightbox-photo-container {

@@ -8,7 +8,7 @@ get_header(); ?>
     if ($random_photo_url) : ?>
         <img src="<?php echo esc_url($random_photo_url); ?>" alt="Photo Paysage Aléatoire">
     <?php endif; ?>
-    <h1>Photographe Event</h1>
+    <h1 class="header-title">Photographe Event</h1>
     <div class="mobile-nav-overlay" style="display: none;">
         <nav class="mobile-nav">
             <?php wp_nav_menu(array('theme_location' => 'primary', 'menu_id' => 'primary-menu-list-mobile')); ?>
@@ -22,7 +22,12 @@ get_header(); ?>
     <?php get_template_part('template-parts/photos-grid'); ?>
     <?php get_template_part('template-parts/lightbox'); ?>
 
-    <button id="load-more">Charger plus</button>
+    <div class="load-more-btn">
+        <button id="load-more" class="btn">Charger plus</button>
+    </div>
+
+
+
 </main>
 
 <?php get_footer(); ?>
