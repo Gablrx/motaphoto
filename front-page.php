@@ -19,7 +19,7 @@ get_header(); ?>
 
 <main id="main-content" role="main">
     <?php get_template_part('template-parts/photos-filters'); ?>
-    <?php get_template_part('template-parts/photos-grid'); ?>
+    <?php get_template_part('template-parts/grid-photos'); ?>
     <?php get_template_part('template-parts/lightbox'); ?>
 
     <div class="load-more-btn">
