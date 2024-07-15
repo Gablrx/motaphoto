@@ -69,9 +69,9 @@
             if (!is_wp_error($current_photo_categories) && !empty($current_photo_categories)) {
                 // Préparer les arguments pour la requête des photos de la même catégorie
                 $args = array(
-                    'post_type' => 'photo', // Assurez-vous que c'est le bon type de post pour vos photos
+                    'post_type' => 'photo', // CPT photo
                     'posts_per_page' => 2, // 2 photos uniquement
-                    'post__not_in' => array($post->ID), // Exclure la photo courante
+                    'post__not_in' => array($post->ID), // Exclure la photo actuelle
                     'tax_query' => array(
                         array(
                             'taxonomy' => 'photo_categories',
@@ -90,7 +90,6 @@
                             <h3>Vous aimerez aussi</h3>
                             <?php while ($related_photos->have_posts()) : $related_photos->the_post(); ?>
                                 <?php get_template_part('template-parts/grid-photo-item'); ?>
-
 
                             <?php endwhile; ?>
 

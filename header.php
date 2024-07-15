@@ -6,6 +6,23 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="http://gmpg.org/xfn/11">
+
+    <!-- Titre dynamique -->
+    <?php if (function_exists('wp_get_document_title')) : ?>
+        <title><?php echo wp_get_document_title(); ?></title>
+    <?php else : ?>
+        <title><?php bloginfo('name'); ?></title>
+    <?php endif; ?>
+
+    <!-- Description dynamique -->
+    <?php if (is_front_page() || is_home()) : ?>
+        <meta name="description" content="<?php bloginfo('description'); ?>">
+    <?php elseif (is_single() || is_page()) : ?>
+        <meta name="description" content="<?php echo strip_tags(get_the_excerpt()); ?>">
+    <?php else : ?>
+        <meta name="description" content="<?php bloginfo('description'); ?>">
+    <?php endif; ?>
+    <!-- Feuille de style principale -->
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 
     <!-- Préchargement des polices Space Mono -->

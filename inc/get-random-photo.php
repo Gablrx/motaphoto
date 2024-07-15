@@ -1,6 +1,6 @@
 <?php
 
-// Récupére l'URL d'une photo aléatoire au format paysage Pour la bannière
+// Récupére l'URL d'une photo aléatoire au format paysage. 
 function get_random_photo()
 {
     $randomPhoto = array(

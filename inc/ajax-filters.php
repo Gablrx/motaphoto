@@ -38,6 +38,8 @@ function motaphoto_filter_photos()
             get_template_part('template-parts/grid-photo-item');
         endwhile;
         wp_reset_postdata();
+    else :
+        echo '<p id="no-photos-found">Aucune photo trouvée avec ces critères.</p>';
     endif;
 
     // nombre maximum de pages de résultats

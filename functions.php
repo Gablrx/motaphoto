@@ -2,9 +2,21 @@
 // functions.php
 
 add_action('after_setup_theme', 'motaphoto_setup');
+add_action('wp_enqueue_scripts', 'motaphoto_scripts');
+
+function motaphoto_setup()
+{
+    // Enregistrement des menus
+    register_nav_menus(array(
+        'primary' => esc_html__('Primary Menu', 'text-domain'),
+        'footer' => esc_html__('Footer Menu', 'text-domain')
+    ));
+
+    add_theme_support('title-tag'); // Balise title
+}
+
 function motaphoto_scripts()
 {
-
 
     if (is_front_page()) {
         // jQuery
@@ -29,19 +41,7 @@ function motaphoto_scripts()
 
 
 
-add_action('wp_enqueue_scripts', 'motaphoto_scripts');
-
-function motaphoto_setup()
-{
-    // Enregistrement des menus
-    register_nav_menus(array(
-        'primary' => esc_html__('Primary Menu', 'text-domain'),
-        'footer' => esc_html__('Footer Menu', 'text-domain')
-    ));
-}
-// Random header photo
-require get_template_directory() . '/inc/get-random-photo.php';
-// Load more AJAX
-require get_template_directory() . '/inc/ajax-load-more.php';
-// Filtres AJAX
-require get_template_directory() . '/inc/ajax-filters.php';
+// Fichiers inclus :
+require get_template_directory() . '/inc/get-random-photo.php'; // Random header photo
+require get_template_directory() . '/inc/ajax-load-more.php'; // Load more AJAX
+require get_template_directory() . '/inc/ajax-filters.php'; // Filtres AJAX

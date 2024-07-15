@@ -1094,11 +1094,15 @@ body.admin-bar .lightbox-close {
   opacity: 1;
 }
 
+#no-photos-found {
+  margin-bottom: 80px;
+}
+
 #main-content {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 0 11vw;
+  margin: 0px 11vw 160px 11vw;
 }
 @media (max-width: 1025px) {
   #main-content {
