@@ -15,7 +15,7 @@
     background-color: #fefefe;
     margin: 5% auto;
     border: 4px solid #000000;
-    max-width: 500px;
+    max-width: 400px;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     font-size: 12px;
@@ -77,6 +77,10 @@
           background-color: black;
           color: white;
         }
+      }
+
+      #wpcf7-f36-o1 > form {
+        max-width: 300px;
       }
     }
   }
