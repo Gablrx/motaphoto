@@ -48,7 +48,7 @@
       .btn {
         background-color: #d8d8d8;
         border: none;
-        color: white;
+        color: rgb(0, 0, 0);
         width: 50%;
         height: 20px;
         text-align: center;
@@ -59,6 +59,7 @@
         font-weight: 400;
         font-size: 12px;
         cursor: pointer;
+        line-height: 1.5;
       }
       .btn:hover {
         background-color: black;

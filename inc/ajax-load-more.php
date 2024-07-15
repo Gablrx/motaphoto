@@ -56,7 +56,7 @@ add_action('wp_ajax_nopriv_load_more_photos', 'motaphoto_load_more_photos');
 function motaphoto_localize_script()
 {
     global $wp_query;
-    wp_localize_script('load-more-js', 'wpPhotoData', array(
+    wp_localize_script('filters-js', 'wpPhotoData', array(
         'ajaxUrl' => admin_url('admin-ajax.php'),
         'maxPages' => get_max_pages()
     ));

@@ -2,7 +2,7 @@
 <div id="photos-filters">
 
     <div class="filters-selects">
-        <select id="filter-categories" class="select2">
+        <select id="filter-categories" name="filter-categories" class="select2">
             <option value="">CATÉGORIES</option>
             <?php
             $categories = get_terms('photo_categories');
@@ -11,7 +11,7 @@
             }
             ?>
         </select>
-        <select id="filter-formats" class="select2">
+        <select id="filter-formats" name="filter-formats" class="select2">
             <option value="">FORMATS</option>
             <?php
             $formats = get_terms('photo_formats');
@@ -22,7 +22,7 @@
         </select>
     </div>
     <div class="sort-select">
-        <select id="sort-order" class="select2">
+        <select id="sort-order" name="sort-order" class="select2">
             <option value="">TRIER PAR</option>
             <option value="desc">Les plus récentes</option>
             <option value="asc">Les plus anciennes</option>

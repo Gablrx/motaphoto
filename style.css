@@ -583,6 +583,7 @@ template {
   text-align: center;
 }
 
+/* FILTRES SELECT */
 #photos-filters {
   display: flex;
   justify-content: center;
@@ -632,8 +633,9 @@ template {
   font-family: "Space Mono", monospace;
   font-size: 12px;
 }
-#photos-filters select option:hover {
-  background-color: red !important;
+
+body.admin-bar .select2-dropdown {
+  margin-top: 32px;
 }
 
 .select2-container .select2-selection--single,
@@ -649,16 +651,22 @@ template {
 }
 
 .select2-container--default .select2-results__option:first-child:hover {
-  background-color: red !important;
+  background-color: #e00000 !important;
   color: transparent !important;
 }
 
-.select2-container--default .select2-results__option:hover,
+/* .select2-container--default .select2-results__option:hover, */
 .select2-container--default .select2-results__option--highlighted {
-  background-color: red !important;
+  background-color: #e00000 !important;
   color: white !important;
 }
 
+.select2-container--default .select2-results__option--selected {
+  background-color: #ffd6d6;
+}
+
+/* FIN FILTRES SELECT */
+/* BTN CHARGER PLUS */
 .load-more-btn {
   display: flex;
   justify-content: center;
@@ -678,10 +686,11 @@ template {
   cursor: pointer;
 }
 .load-more-btn .btn:hover {
-  background-color: black;
+  background-color: #000000;
   color: white;
 }
 
+/* FIN BTN CHARGER PLUS */
 .single-photo .photo-content {
   width: 100%;
   display: flex;
@@ -728,7 +737,7 @@ template {
 .single-photo .interactions .contact-photo .btn {
   background-color: #d8d8d8;
   border: none;
-  color: white;
+  color: rgb(0, 0, 0);
   width: 50%;
   height: 20px;
   text-align: center;
@@ -739,6 +748,7 @@ template {
   font-weight: 400;
   font-size: 12px;
   cursor: pointer;
+  line-height: 1.5;
 }
 .single-photo .interactions .contact-photo .btn:hover {
   background-color: black;
@@ -935,6 +945,10 @@ template {
   justify-content: flex-end;
   padding-top: 10px;
   padding-right: 10px;
+}
+
+body.admin-bar .lightbox-close {
+  padding-top: 40px;
 }
 
 .lightbox .close {

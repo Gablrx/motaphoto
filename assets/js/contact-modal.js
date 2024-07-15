@@ -3,7 +3,6 @@
 // Une fois que le DOM est entièrement chargé :
 document.addEventListener('DOMContentLoaded', function () {
 
-
     const openModalButtons = document.querySelectorAll('.open-contact-modal'); // Tous les elmts qui ouvrent la modale de contact
     const contactModal = document.getElementById('contactModal'); // La fenêtre de la modale
 

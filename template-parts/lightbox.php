@@ -1,4 +1,5 @@
 <!-- template-parts/lightbox.php -->
+<!-- Structure html de la popup lightbox -->
 <div id="photo-lightbox" class="lightbox" style="display:none;">
     <div class="lightbox-close">
         <span class="close"></span>

@@ -1,3 +1,4 @@
+/* FILTRES SELECT */
 #photos-filters {
   display: flex;
   justify-content: center;
@@ -42,13 +43,12 @@
 
   select {
     font-family: "Space Mono", monospace;
-
     font-size: 12px;
-
-    option:hover {
-      background-color: red !important;
-    }
   }
+}
+
+body.admin-bar .select2-dropdown {
+  margin-top: 32px; // debug conflit select / admin bar
 }
 
 .select2-container .select2-selection--single,
@@ -63,16 +63,23 @@
   color: transparent !important;
 }
 .select2-container--default .select2-results__option:first-child:hover {
-  background-color: red !important;
+  background-color: $rouge !important;
   color: transparent !important;
 }
 
-.select2-container--default .select2-results__option:hover,
+/* .select2-container--default .select2-results__option:hover, */
 .select2-container--default .select2-results__option--highlighted {
-  background-color: red !important;
+  background-color: $rouge !important;
   color: white !important;
 }
 
+.select2-container--default .select2-results__option--selected {
+  background-color: $rouge-ter;
+}
+
+/* FIN FILTRES SELECT */
+
+/* BTN CHARGER PLUS */
 .load-more-btn {
   display: flex;
   justify-content: center;
@@ -95,7 +102,8 @@
     cursor: pointer;
   }
   .btn:hover {
-    background-color: black;
+    background-color: $noir;
     color: white;
   }
 }
+/* FIN BTN CHARGER PLUS */

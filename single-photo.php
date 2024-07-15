@@ -36,7 +36,7 @@
 
                 <div class="contact-photo">
                     <p>Cette photo vous intéresse ?</p>
-                    <a href="#contactModal" class="btn open-contact-modal autoFilledRefPhoto" data-ref-photo="<?php the_field('reference'); ?>">Contact</a>
+                    <a id="load-more" href="#contactModal" class="btn open-contact-modal autoFilledRefPhoto" data-ref-photo="<?php the_field('reference'); ?>">Contact</a>
                 </div>
 
                 <!-- Navigation links -->

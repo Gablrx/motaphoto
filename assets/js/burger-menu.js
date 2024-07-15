@@ -1,5 +1,5 @@
 /* burger-menu.js */
-// JavaScript
+
 document.addEventListener('DOMContentLoaded', function () {
     const burgerMenu = document.querySelector('.burger-menu');
     const mobileMenu = document.querySelector('.mobile-menu');
