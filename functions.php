@@ -12,12 +12,14 @@ function motaphoto_setup()
         'footer' => esc_html__('Footer Menu', 'text-domain')
     ));
 
+
+    add_theme_support('post-thumbnails'); // Support img mise en avant
     add_theme_support('title-tag'); // Balise title
 }
 
+// Scripts & Styles
 function motaphoto_scripts()
 {
-
     if (is_front_page()) {
         // jQuery
         wp_enqueue_script('jquery');
@@ -38,8 +40,6 @@ function motaphoto_scripts()
 
     wp_enqueue_style('motaphoto-style', get_stylesheet_uri());
 }
-
-
 
 // Fichiers inclus :
 require get_template_directory() . '/inc/get-random-photo.php'; // Random header photo
